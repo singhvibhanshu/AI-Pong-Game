@@ -1,5 +1,7 @@
 import pygame
 from pong import Game
+import neat
+import os
 
 class PongGame:
     def __init__(self, window, width, height):
@@ -32,3 +34,4 @@ class PongGame:
             pygame.display.update()
 
         pygame.quit()
+
