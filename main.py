@@ -32,6 +32,17 @@ class PongGame:
 
         pygame.quit()
 
+    def train_ai(self, genome1, genome2, config):
+        run = True
+        while run:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    return False
+                
+            self.game.loop()
+            self.game.draw()
+            pygame.display.update()
+
 def eval_genomes(genomes, config):
     width, height = 700, 500
     window = pygame.display.set_mode((width, height))
