@@ -1,3 +1,4 @@
+import neat.population
 import pygame
 from pong import Game
 import neat
@@ -34,6 +35,16 @@ class PongGame:
             pygame.display.update()
 
         pygame.quit()
+
+def run_neat(config):
+    #p = neat.Checkpointer.restore_checkpoint
+    p = neat.population(config)
+    p.add_reporter(neat.StdOutReporter(True))
+    stats = neat.StatisticsReporter()
+    p.add_reporter(stats)
+    p.add_reporter(neat.Checkpointer(1))
+
+    p.run(eval_genomes, 50)
 
 if __name__ == "__main__":
     local_dir = os.path.dirname(__file__)
