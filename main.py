@@ -1,4 +1,3 @@
-import neat.population
 import pygame
 from pong import Game
 import neat
@@ -23,18 +22,18 @@ class PongGame:
 
             keys = pygame.key.get_pressed()
             if keys[pygame.K_w]:
-                game.move_paddle(left=True, up=True)
+                self.game.move_paddle(left=True, up=True)
             if keys[pygame.K_s]:
-                game.move_paddle(left=True, up=False)
+                self.game.move_paddle(left=True, up=False)
 
-            game_info = game.loop()
-            print(game_info.left_score, game_info.right_score)
-
-            game.loop()
-            game.draw(False, True)
+            game_info = self.game.loop()
+            self.game.draw(False, True)
             pygame.display.update()
 
         pygame.quit()
+
+def eval_genomes(genomes, config):
+    pass
 
 def run_neat(config):
     #p = neat.Checkpointer.restore_checkpoint
@@ -44,7 +43,7 @@ def run_neat(config):
     p.add_reporter(stats)
     p.add_reporter(neat.Checkpointer(1))
 
-    p.run(eval_genomes, 50)
+    winner = p.run(eval_genomes, 50)
 
 if __name__ == "__main__":
     local_dir = os.path.dirname(__file__)
