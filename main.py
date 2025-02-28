@@ -55,7 +55,9 @@ def eval_genomes(genomes, config):
         for genome_id2, genome2 in genomes[i+1:]:
             genome2.fitness = 0 if genome2.fitness == None else genome2.fitness
             game = PongGame(window, width, height)
-            game.train_ai(genome1, genome2, config)
+            force_quit = game.train_ai(genome1, genome2, config)
+            if force_quit():
+                quit()
 
 def run_neat(config):
     #p = neat.Checkpointer.restore_checkpoint
