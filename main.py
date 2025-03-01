@@ -33,15 +33,26 @@ class PongGame:
         pygame.quit()
 
     def train_ai(self, genome1, genome2, config):
+        net1 = neat.nn.FeedForwardNetwork.create(genome1, config)
+        net2 = neat.nn.FeedForwardNetwork.create(genome2, config)
+
         run = True
         while run:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    return False
-                
-            self.game.loop()
+                    quit()
+
+            output1 = net1.activate((self.left_paddle.y, self.ball.y, abs(self.left_paddle.x - self.ball.x)))
+            output2 = net2.activate((self.right_paddle.y, self.ball.y, abs(self.right_paddle.x - self.ball.x)))
+
+            game_info = self.game.loop()
+
             self.game.draw()
             pygame.display.update()
+
+            if game_info.left_score >= 1 or game_info.right_score >= 1 or game_info.left_hits > 50:
+                self.calculate_fitness(genome1, genome2, game_info)
+                break
 
 def eval_genomes(genomes, config):
     width, height = 700, 500
