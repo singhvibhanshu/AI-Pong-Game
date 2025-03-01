@@ -38,7 +38,7 @@ This will train the AI over multiple generations. Once training is complete, the
 
 ## How It Works
 - The AI uses NEAT to evolve and improve its gameplay over multiple generations.
-- The `main.py` file trains the AI, while `play.py` allows you to play against a pre-trained AI.
+- The `main.py` file first trains the AI and then allows you to play, while `play.py` allows you to play against a pre-trained AI.
 
 ## Controls
 - **Player Paddle (Left Side):**
