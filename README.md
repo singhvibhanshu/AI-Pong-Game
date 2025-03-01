@@ -30,7 +30,7 @@ python play.py
 ```
 
 ### 2. Train the AI First, Then Play
-If you want to train the AI yourself before playing, download `main.py` and run:
+If you want to train the AI yourself before playing, download `main.py` and `best.pickle` and run:
 ```sh
 python main.py
 ```
@@ -52,6 +52,7 @@ This will train the AI over multiple generations. Once training is complete, the
 - `config.txt` - Configuration file for NEAT.
 - `requirements.txt` - Lists all required dependencies.
 - `neat-checkpoint-45` - Pre-trained model checkpoint.
+- `best.pickle` - Stores the best fitness model.
 
 ## Acknowledgments
 This project was developed using the [NEAT-Python](https://neat-python.readthedocs.io/en/latest/) library.
